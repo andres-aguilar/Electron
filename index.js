@@ -7,10 +7,30 @@ app.on('before-quit', () => {
 })
 
 app.on('ready', () => {
-    let window = new BrowserWindow()
+    // Crear una nueva ventana
+    let window = new BrowserWindow({
+        width: 800,
+        height: 600,
+        title: 'Hola mundo',
+        center: true,
+        show: false
+    })
 
+    window.once('ready-to-show', () => {
+        window.show()
+    })
+
+    // Escuchar el evento de mover la ventana
+    window.on('move', () => {
+        const position = window.getPosition()
+        // console.log(`La posición de la ventana es: ${position}`)
+    })
+
+    // Escuchar el evento de cerrar la ventana
     window.on('colsed', () => {
         window = null
         app.quit()
     })
+
+    window.loadURL('https://devdocs.io/')
 })
