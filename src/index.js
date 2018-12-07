@@ -15,7 +15,7 @@ app.on('ready', () => {
     // Crear una nueva ventana
     let window = new BrowserWindow({
         width: 800,
-        height: 600,
+        height: 500,
         title: 'Hola mundo',
         center: true,
         show: false
