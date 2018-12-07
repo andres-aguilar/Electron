@@ -40,4 +40,8 @@ app.on('ready', () => {
 
     // Cargar el archivo index.html local
     window.loadURL(`file://${__dirname}/render/index.html`)
+    //window.loadURL('https://devdocs.io')
+
+    // Activar las devtools
+    //window.toggleDevTools()
 })
