@@ -32,5 +32,6 @@ app.on('ready', () => {
         app.quit()
     })
 
-    window.loadURL('https://devdocs.io/')
+    // Cargar el archivo index.html local
+    window.loadURL(`file://${__dirname}/render/index.html`)
 })
