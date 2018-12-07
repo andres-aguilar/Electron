@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/photon.min.css">
     <title>Hola mundo</title>
 </head>
 <body>
-    <div>
-        <p> Hola desde electron </p>
-        <p id="message"></p>
+    <div class="window">
+        <header class="toolbar toolbar-header">
+            <h1 class="title">Header</h1>
+        </header>
+        <div class="window-content">
+            <div class="pane-group">
+                <div class="pane-sm sidebar"> Side bar </div>
+                <div class="pane"> Content </div>
+            </div>
+        </div>
+        <footer class="toolbar toolbar-footer">
+            <h1 class="title">Footer</h1>
+        </footer>
     </div>
     <script src="./main.js"></script>
 </body>
