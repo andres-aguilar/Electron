@@ -1,6 +1,11 @@
 'use strict'
 
-const { app, BrowserWindow } = require('electron')
+import { app, BrowserWindow } from 'electron'
+import devtools from './devtools'
+
+if (process.env.NODE_ENV == 'dev') {
+    devtools()
+}
 
 app.on('before-quit', () => {
     console.log('Saliendo...')
@@ -16,6 +21,7 @@ app.on('ready', () => {
         show: false
     })
 
+    // Mostrar la ventana cuando ya esté lista para mostrarse
     window.once('ready-to-show', () => {
         window.show()
     })
