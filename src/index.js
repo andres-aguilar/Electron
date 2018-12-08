@@ -86,3 +86,17 @@ ipcMain.on('open-directory', (event) => {
         }
     })
 })
+
+ipcMain.on('open-save-dialog', (event, ext) => {
+    console.log(ext.substr(1))
+
+    dialog.showSaveDialog(window, {
+        title: 'Guardar imagen',
+        buttonLabel: 'Gardar imagen',
+        filters: [{name: 'images', extensions: [ext.substr(1)]}]
+    }, file => {
+        if (file) {
+            event.sender.send('save-image', file)
+        }
+    })
+})
