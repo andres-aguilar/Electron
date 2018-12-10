@@ -12,8 +12,13 @@ function setIpc() {
     })
 
     ipcRenderer.on('save-image', (event, file) => {
-        console.log(file)
-        saveImage(file)
+        saveImage(file, err => {
+            if (err) {
+                return showDialog('error', 'Patzipics', err.message)
+            } else {
+                return showDialog('info', 'Patzipics', 'imagen guardada')
+            }
+        })
     })
 }
 
@@ -22,6 +27,10 @@ function saveFile() {
     const ext = path.extname(image)
 
     ipcRenderer.send('open-save-dialog', ext)
+}
+
+function showDialog(type, title, message) {
+    ipcRenderer.send('show-dialog', {type, title, message})
 }
 
 function openDirectory() {

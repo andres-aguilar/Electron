@@ -7,6 +7,8 @@ import filesize from 'filesize'
 import path from 'path'
 import devtools from './devtools'
 
+import handleErrors from './handle-errors'
+
 if (process.env.NODE_ENV == 'dev') {
     devtools()
 }
@@ -24,6 +26,8 @@ app.on('ready', () => {
         center: true,
         show: false
     })
+
+    handleErrors(window)
 
     // Mostrar la ventana cuando ya esté lista para mostrarse
     window.once('ready-to-show', () => {
@@ -98,5 +102,14 @@ ipcMain.on('open-save-dialog', (event, ext) => {
         if (file) {
             event.sender.send('save-image', file)
         }
+    })
+})
+
+ipcMain.on('show-dialog', (event, info) => {
+    dialog.showMessageBox(window, { 
+        buttons:['OK'], 
+        type: info.type, 
+        title: info.title, 
+        message: info.message
     })
 })
